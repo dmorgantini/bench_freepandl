@@ -51,7 +51,7 @@ export const DEFAULT_TRANSACTIONS = [
     name: 'Refund',
     date: moment('3/25/21'),
     category: 'Returns & Chargebacks',
-    total: 35.0
+    total: -35.0
   },
   {
     id: '8',

@@ -14,19 +14,6 @@ function useIncomeStatement(startDate, endDate) {
 
 
 export const createIncomeStatement = (transactions, startDate, endDate) => {
-<<<<<<< Updated upstream
-  const incomestatement = transactions.reduce(
-    (acc) => {
-      return acc;
-    },
-    {
-      Revenues: { total: 0 },
-      'Cost of Sales': { total: 0 },
-      Expenses: { total: 0 },
-      Profit: { gross: 0, net: 0 }
-    }
-  );
-=======
   const initialValue = 0;
   /*const incomestatement = transactions.reduce((sum, p) => sum + p.revenuetotal*p.total, 0, {
     revenues: { total: 0 },
@@ -34,10 +21,9 @@ export const createIncomeStatement = (transactions, startDate, endDate) => {
     expenses: { total: 0 },
     profit: { gross: 0, net: 0 }
   });*/
->>>>>>> Stashed changes
 
   const incomeStatement = {
-    revenues: { total: 1000 },
+    revenues: { total: 0 },
     costOfSales: { total: 0 },
     expenses: { total: 0 },
     profit: { gross: 0, net: 0 }
@@ -46,19 +32,25 @@ export const createIncomeStatement = (transactions, startDate, endDate) => {
   const filteredTxns = transactions.filter(txn => txn.date < startDate && txn.date > endDate);
 
   //Put in filteredTxns arr
-  const setServiceRevenue = arr => {
-    let serviceRevenueSum = 0;
+  const calcIncomeStatement = arr => {
     arr.forEach(
       function(item) {
-        if (item.category === 'Service Revenue') {
-          serviceRevenueSum += item.total;
-        }
+        let category = item.category;
+        let type = accountTypes[category].type;
+        let amount = item.total;
+        incomeStatement[type][category] ? 
+          incomeStatement[type][category] += amount : 
+          incomeStatement[type][category] = amount;
+        incomeStatement[type].total += amount;
       }
     )
-    incomeStatement.revenues.serviceRevenue = serviceRevenueSum;
-  }
+    let grossProfit = incomeStatement.revenues.total - incomeStatement.costOfSales.total;
+    let netProfit = grossProfit - incomeStatement.expenses.total;
 
-  setServiceRevenue(transactions);
+    incomeStatement.profit.gross = grossProfit;
+    incomeStatement.profit.net = netProfit;
+  }
+  calcIncomeStatement(transactions);
 
   return incomeStatement;
 };
