@@ -8,7 +8,7 @@ import Register from './pages/Register';
 import DashboardApp from './pages/DashboardApp';
 import Products from './pages/Products';
 import Blog from './pages/Blog';
-import User from './pages/User';
+import Transactions from './pages/Transaction';
 import NotFound from './pages/Page404';
 
 // ----------------------------------------------------------------------
@@ -20,7 +20,7 @@ export default function Router() {
       element: <DashboardLayout />,
       children: [
         { path: 'app', element: <DashboardApp /> },
-        { path: 'transactions', element: <User /> },
+        { path: 'transactions', element: <Transactions /> },
         { path: 'products', element: <Products /> },
         { path: 'blog', element: <Blog /> }
       ]
