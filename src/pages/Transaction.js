@@ -20,23 +20,21 @@ import {
 } from '@mui/material';
 // components
 import Page from '../components/Page';
-import Label from '../components/Label';
 import Scrollbar from '../components/Scrollbar';
 import Iconify from '../components/Iconify';
 import SearchNotFound from '../components/SearchNotFound';
-import { UserListHead, UserListToolbar, UserMoreMenu } from '../sections/@dashboard/transactions';
-//
-import USERLIST from '../_mocks_/user';
-
-// ----------------------------------------------------------------------
+import {
+  TransactionListHead,
+  UserListToolbar,
+  TransactionMoreMenu
+} from '../sections/@dashboard/transactions';
+import useTransactionStore from '../hooks/useTransactionStore';
 
 const TABLE_HEAD = [
-  { id: 'name', label: 'Name', alignRight: false },
-  { id: 'company', label: 'Company', alignRight: false },
-  { id: 'role', label: 'Role', alignRight: false },
-  { id: 'isVerified', label: 'Verified', alignRight: false },
-  { id: 'status', label: 'Status', alignRight: false },
-  { id: '' }
+  { id: 'date', label: 'Date', alignRight: false },
+  { id: 'name', label: 'Description/Transaction Name', alignRight: false },
+  { id: 'amount', label: 'Amount', alignRight: false },
+  { id: 'category', label: 'Category', alignRight: false }
 ];
 
 // ----------------------------------------------------------------------
@@ -76,7 +74,8 @@ export default function Transaction() {
   const [selected, setSelected] = useState([]);
   const [orderBy, setOrderBy] = useState('name');
   const [filterName, setFilterName] = useState('');
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(20);
+  const [transactions] = useTransactionStore();
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -86,7 +85,7 @@ export default function Transaction() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = USERLIST.map((n) => n.name);
+      const newSelecteds = transactions.map((n) => n.name);
       setSelected(newSelecteds);
       return;
     }
@@ -124,18 +123,22 @@ export default function Transaction() {
     setFilterName(event.target.value);
   };
 
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - USERLIST.length) : 0;
+  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - transactions.length) : 0;
 
-  const filteredUsers = applySortFilter(USERLIST, getComparator(order, orderBy), filterName);
+  const filteredTransactions = applySortFilter(
+    transactions,
+    getComparator(order, orderBy),
+    filterName
+  );
 
-  const isUserNotFound = filteredUsers.length === 0;
+  const isTransactionNotFound = filteredTransactions.length === 0;
 
   return (
     <Page title="Transactions | Minimal-UI">
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            User
+            Transactions
           </Typography>
           <Button
             variant="contained"
@@ -157,20 +160,20 @@ export default function Transaction() {
           <Scrollbar>
             <TableContainer sx={{ minWidth: 800 }}>
               <Table>
-                <UserListHead
+                <TransactionListHead
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
-                  rowCount={USERLIST.length}
+                  rowCount={transactions.length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
                 />
                 <TableBody>
-                  {filteredUsers
+                  {filteredTransactions
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((row) => {
-                      const { id, name, role, status, company, avatarUrl, isVerified } = row;
+                      const { id, name, date, category, total } = row;
                       const isItemSelected = selected.indexOf(name) !== -1;
 
                       return (
@@ -188,28 +191,12 @@ export default function Transaction() {
                               onChange={(event) => handleClick(event, name)}
                             />
                           </TableCell>
-                          <TableCell component="th" scope="row" padding="none">
-                            <Stack direction="row" alignItems="center" spacing={2}>
-                              <Avatar alt={name} src={avatarUrl} />
-                              <Typography variant="subtitle2" noWrap>
-                                {name}
-                              </Typography>
-                            </Stack>
-                          </TableCell>
-                          <TableCell align="left">{company}</TableCell>
-                          <TableCell align="left">{role}</TableCell>
-                          <TableCell align="left">{isVerified ? 'Yes' : 'No'}</TableCell>
-                          <TableCell align="left">
-                            <Label
-                              variant="ghost"
-                              color={(status === 'banned' && 'error') || 'success'}
-                            >
-                              {sentenceCase(status)}
-                            </Label>
-                          </TableCell>
-
+                          <TableCell align="left">{date.format('M/D/YY')}</TableCell>
+                          <TableCell align="left">{name}</TableCell>
+                          <TableCell align="left">{total.toFixed(2)}</TableCell>
+                          <TableCell align="left">{category}</TableCell>
                           <TableCell align="right">
-                            <UserMoreMenu />
+                            <TransactionMoreMenu />
                           </TableCell>
                         </TableRow>
                       );
@@ -220,7 +207,7 @@ export default function Transaction() {
                     </TableRow>
                   )}
                 </TableBody>
-                {isUserNotFound && (
+                {isTransactionNotFound && (
                   <TableBody>
                     <TableRow>
                       <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
@@ -236,7 +223,7 @@ export default function Transaction() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={USERLIST.length}
+            count={transactions.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
