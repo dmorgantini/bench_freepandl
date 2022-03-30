@@ -5,7 +5,13 @@ import categories from '../_mocks_/categories';
 function useIncomeStatement(startDate, endDate) {
   const [transactions] = useTransactionStore();
 
-  const incomestatement = transactions.reduce(() => {}, {
+  const incomestatement = createIncomeStatement(transactions, startDate, endDate);
+
+  return incomestatement;
+}
+
+export const createIncomeStatement = (transactions, startDate, endDate) => {
+  const incomestatement = transactions.reduce((acc) => { return acc;}, {
     revenues: { total: 0 },
     costOfSales: { total: 0 },
     expenses: { total: 0 },
@@ -13,6 +19,6 @@ function useIncomeStatement(startDate, endDate) {
   });
 
   return incomestatement;
-}
+};
 
 export default useIncomeStatement;

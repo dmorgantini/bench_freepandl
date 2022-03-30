@@ -3,7 +3,7 @@ import moment from 'moment';
 
 const key = 'transactions';
 
-const DEFAULT_TRANSACTIONS = [
+export const DEFAULT_TRANSACTIONS = [
   {
     id: '1',
     name: 'Deposit',
