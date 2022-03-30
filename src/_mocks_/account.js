@@ -1,8 +1,8 @@
 // ----------------------------------------------------------------------
 
 const account = {
-  displayName: 'Jaydon Frankie',
-  email: 'demo@minimals.cc',
+  displayName: "Frankie's Pizza Palace",
+  email: 'frankies@pizza.cc',
   photoURL: '/static/mock-images/avatars/avatar_default.jpg'
 };
 
