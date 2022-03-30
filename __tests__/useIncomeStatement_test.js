@@ -10,6 +10,6 @@ describe('createIncomeStatement', () => {
       moment('3/1/21'),
       moment('3/31/21')
     );
-    expect(incomeStatement.revenues.serviceRevenue).toBe(1000);
+    expect(incomeStatement.Revenues['Service Revenue']).toBe(1000);
   });
 });

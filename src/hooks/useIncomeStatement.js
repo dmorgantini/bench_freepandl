@@ -11,12 +11,17 @@ function useIncomeStatement(startDate, endDate) {
 }
 
 export const createIncomeStatement = (transactions, startDate, endDate) => {
-  const incomestatement = transactions.reduce((acc) => { return acc;}, {
-    revenues: { total: 0 },
-    costOfSales: { total: 0 },
-    expenses: { total: 0 },
-    profit: { gross: 0, net: 0 }
-  });
+  const incomestatement = transactions.reduce(
+    (acc) => {
+      return acc;
+    },
+    {
+      Revenues: { total: 0 },
+      'Cost of Sales': { total: 0 },
+      Expenses: { total: 0 },
+      Profit: { gross: 0, net: 0 }
+    }
+  );
 
   return incomestatement;
 };
