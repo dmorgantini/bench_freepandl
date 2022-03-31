@@ -109,7 +109,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
           </Box>
 
           <Button
-            href="https://material-ui.com/store/items/minimal-dashboard/"
+            href="https://bench.co/?utm_campaign=-prospect-&utm_source=owned_pdf&utm_medium=resource&utm_content=income_statement_template"
             target="_blank"
             variant="contained"
           >
