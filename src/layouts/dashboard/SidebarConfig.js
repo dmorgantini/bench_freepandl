@@ -15,6 +15,11 @@ const sidebarConfig = [
     title: 'transactions',
     path: '/dashboard/transactions',
     icon: getIcon('eva:people-fill')
+  },
+  {
+    title: 'More Helpful Resources',
+    path: '/dashboard/blog',
+    icon: getIcon('eva:file-text-fill')
   }
 ];
 
