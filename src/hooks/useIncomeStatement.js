@@ -1,4 +1,5 @@
 import moment from 'moment';
+import * as _ from 'lodash';
 import useTransactionStore from './useTransactionStore';
 import accountTypes from '../_mocks_/categories';
 
@@ -40,7 +41,7 @@ export const createIncomeStatement = (transactions, startDate, endDate) => {
     incomeStatement.profit.gross = grossProfit;
     incomeStatement.profit.net = netProfit;
   };
-  calcIncomeStatement(transactions);
+  calcIncomeStatement(_.values(transactions));
 
   return incomeStatement;
 };
