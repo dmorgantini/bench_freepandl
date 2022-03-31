@@ -2,7 +2,6 @@
 import { alpha, styled } from '@mui/material/styles';
 import { Card, Typography } from '@mui/material';
 // utils
-import { fShortenNumber } from '../../../utils/formatNumber';
 //
 import Iconify from '../../../components/Iconify';
 import { formatIncomeStatementData } from '../../../utils/formatNumber';
@@ -45,7 +44,9 @@ export default function AppItemOrders() {
       <IconWrapperStyle>
         <Iconify icon="ant-design:dollar-circle-outlined" width={24} height={24} />
       </IconWrapperStyle>
-      <Typography variant="h3">{formatIncomeStatementData(incomeStatement.revenues.total)}</Typography>
+      <Typography variant="h3">
+        {formatIncomeStatementData(incomeStatement.revenues.total)}
+      </Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
         Total Revenue
       </Typography>

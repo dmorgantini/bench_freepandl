@@ -38,8 +38,8 @@ export default function AppRevenueByCategory() {
   console.log(incomeStatement);
 
   const CHART_DATA = [
-    incomeStatement.revenues['Sales Revenue'] || 0, 
-    incomeStatement.revenues['Service Revenue'] || 0, 
+    incomeStatement.revenues['Sales Revenue'] || 0,
+    incomeStatement.revenues['Service Revenue'] || 0,
     incomeStatement.revenues['Returns & Chargebacks'] || 0,
     incomeStatement.revenues['Interest Income'] || 0,
     incomeStatement.revenues['Other Income'] || 0
@@ -54,7 +54,13 @@ export default function AppRevenueByCategory() {
       theme.palette.warning.main,
       theme.palette.error.main
     ],
-    labels: ['Sales Revenue', 'Service Revenue', 'Returns & Chargebacks', 'Interest Income', 'Other Income'],
+    labels: [
+      'Sales Revenue',
+      'Service Revenue',
+      'Returns & Chargebacks',
+      'Interest Income',
+      'Other Income'
+    ],
     stroke: { colors: [theme.palette.background.paper] },
     legend: { floating: true, horizontalAlign: 'center' },
     dataLabels: { enabled: true, dropShadow: { enabled: false } },
