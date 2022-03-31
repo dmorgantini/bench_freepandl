@@ -5,6 +5,8 @@ import { Card, Typography } from '@mui/material';
 import { fShortenNumber } from '../../../utils/formatNumber';
 //
 import Iconify from '../../../components/Iconify';
+import { formatIncomeStatementData } from '../../../utils/formatNumber';
+import useIncomeStatement from '../../../hooks/useIncomeStatement';
 
 // ----------------------------------------------------------------------
 
@@ -37,14 +39,15 @@ const IconWrapperStyle = styled('div')(({ theme }) => ({
 const TOTAL = 1723315;
 
 export default function AppItemOrders() {
+  const incomeStatement = useIncomeStatement();
   return (
     <RootStyle>
       <IconWrapperStyle>
-        <Iconify icon="ant-design:windows-filled" width={24} height={24} />
+        <Iconify icon="ant-design:dollar-circle-outlined" width={24} height={24} />
       </IconWrapperStyle>
-      <Typography variant="h3">{fShortenNumber(TOTAL)}</Typography>
+      <Typography variant="h3">{formatIncomeStatementData(incomeStatement.revenues.total)}</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-        Item Orders
+        Total Revenue
       </Typography>
     </RootStyle>
   );
