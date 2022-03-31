@@ -12,27 +12,21 @@ import {
   TableContainer,
   Table,
   TableRow,
-  TableCell,
-  Collapse,
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
+  TableCell
 } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import useIncomeStatement from '../../../hooks/useIncomeStatement';
 
 export default function AppIncomeStatement() {
   const incomeStatement = useIncomeStatement();
-  const formatIncomeStatementData = data => {
+  const formatIncomeStatementData = (data) => {
     if (data) {
       if (data < 0) {
-        return `(${Math.abs(data).toFixed(2)})`
-      } if (data >= 0) {
-        return data.toFixed(2);
+        return `(${Math.abs(data).toFixed(2)})`;
       }
-    } else {
-      return '-';
+      return data.toFixed(2);
     }
+    return '-';
   };
 
   return (
@@ -300,7 +294,9 @@ export default function AppIncomeStatement() {
               </TableCell>
               <TableCell align="left" colSpan={1}>
                 <Typography variant="body2">
-                  {formatIncomeStatementData(incomeStatement.expenses['Phone, Internet & Utilities'])}
+                  {formatIncomeStatementData(
+                    incomeStatement.expenses['Phone, Internet & Utilities']
+                  )}
                 </Typography>
               </TableCell>
             </TableRow>
@@ -344,7 +340,7 @@ export default function AppIncomeStatement() {
               </TableCell>
               <TableCell align="left" colSpan={1}>
                 <Typography variant="body2">
-                  {formatIncomeStatementData(incomeStatement.expenses['Supplies'])}
+                  {formatIncomeStatementData(incomeStatement.expenses.Supplies)}
                 </Typography>
               </TableCell>
             </TableRow>

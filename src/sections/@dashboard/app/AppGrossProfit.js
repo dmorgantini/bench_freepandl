@@ -2,11 +2,10 @@
 import { alpha, styled } from '@mui/material/styles';
 import { Card, Typography } from '@mui/material';
 // utils
-import { fShortenNumber } from '../../../utils/formatNumber';
+import { formatIncomeStatementData } from '../../../utils/formatNumber';
 // component
 import Iconify from '../../../components/Iconify';
-
-import formatIncomeStatementData from '../../../utils/formatNumber.js';
+import useIncomeStatement from '../../../hooks/useIncomeStatement';
 
 // ----------------------------------------------------------------------
 
@@ -36,15 +35,17 @@ const IconWrapperStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-const TOTAL = 714000;
+export default function AppGrossProfit() {
+  const incomeStatement = useIncomeStatement();
 
-export default function AppWeeklySales() {
   return (
     <RootStyle>
       <IconWrapperStyle>
         <Iconify icon="akar-icons:thumbs-up" width={24} height={24} />
       </IconWrapperStyle>
-      <Typography variant="h3">{formatIncomeStatementData(incomeStatement.profit.gross)}</Typography>
+      <Typography variant="h3">
+        {formatIncomeStatementData(incomeStatement.profit.gross)}
+      </Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
         Gross Profit
       </Typography>

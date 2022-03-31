@@ -23,11 +23,12 @@ export function fData(number) {
   return numeral(number).format('0.0 b');
 }
 
-export const formatIncomeStatementData = data => {
+export const formatIncomeStatementData = (data) => {
   if (data) {
     if (data < 0) {
-      return `(${Math.abs(data).toFixed(2)})`
-    } if (data >= 0) {
+      return `(${Math.abs(data).toFixed(2)})`;
+    }
+    if (data >= 0) {
       return data.toFixed(2);
     }
   } else {
