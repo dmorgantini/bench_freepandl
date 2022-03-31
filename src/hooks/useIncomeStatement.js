@@ -40,9 +40,10 @@ export const createIncomeStatement = (transactions, startDate, endDate) => {
 
     incomeStatement.profit.gross = grossProfit;
     incomeStatement.profit.net = netProfit;
-    incomeStatement.revenues.percent = ;
+
+    /*incomeStatement.revenues.percent = ;
     incomeStatement.costOfSales.percent = ;
-    incomeStatement.expenses.percent = ;
+    incomeStatement.expenses.percent = ;*/
   };
   calcIncomeStatement(_.values(transactions));
 
