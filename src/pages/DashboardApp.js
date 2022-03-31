@@ -23,7 +23,7 @@ import {
 
 export default function DashboardApp() {
   return (
-    <Page title="Dashboard | Minimal-UI">
+    <Page title="Dashboard | Bench P&L">
       <Container maxWidth="xl">
         <AppHeader />
         <Grid container spacing={3}>

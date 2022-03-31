@@ -170,7 +170,7 @@ export default function FullFeaturedCrudGrid() {
   ];
 
   return (
-    <Page title="Transactions | Minimal-UI">
+    <Page title="Transactions | Bench P&L">
       <Container>
         <Box
           sx={{

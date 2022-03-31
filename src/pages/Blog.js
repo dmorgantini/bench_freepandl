@@ -30,7 +30,7 @@ const SORT_OPTIONS = [
 
 export default function Blog() {
   return (
-    <Page title="Dashboard: Blog | Minimal-UI">
+    <Page title="Resources | Bench P&L">
       <Container>
         <Stack alignItems="left" mb={5}>
           <Typography display="block" variant="h4" gutterBottom>
