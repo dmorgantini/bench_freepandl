@@ -49,76 +49,66 @@ export default function AppIncomeStatement() {
       <CardContent>
         <TableContainer>
           <Table>
-            <Accordion align="left" colSpan={6}>
-              <AccordionSummary align="left" colSpan={6}
-                expandIcon="+"
-                aria-controls="panel2a-content"
-                id="panel2a-header"
-              >
-                <TableRow>
-                  <TableCell align="left" colSpan={4}>
-                    <Typography variant="subtitle1">Revenues</Typography>
-                  </TableCell>
-                </TableRow>
-              </AccordionSummary>
-              <AccordionDetails>
-                <TableRow>
-                  <TableCell sx={{ maxWidth: 100 }} />
-                  <TableCell align="left" colSpan={1}>
-                    <Typography variant="body2">Sales Revenue</Typography>
-                  </TableCell>
-                  <TableCell align="left" colSpan={1}>
-                    <Typography variant="body2">
-                      {formatIncomeStatementData(incomeStatement.revenues['Sales Revenue'])}
-                    </Typography>
-                  </TableCell>
-                </TableRow>{' '}
-                <TableRow>
-                  <TableCell sx={{ maxWidth: 100 }} />
-                  <TableCell align="left" colSpan={1}>
-                    <Typography variant="body2">Service Revenue</Typography>
-                  </TableCell>
-                  <TableCell align="left" colSpan={1}>
-                    <Typography variant="body2">
-                      {formatIncomeStatementData(incomeStatement.revenues['Service Revenue'])}
-                    </Typography>
-                  </TableCell>
-                </TableRow>{' '}
-                <TableRow>
-                  <TableCell sx={{ maxWidth: 100 }} />
-                  <TableCell align="left" colSpan={1}>
-                    <Typography variant="body2">Returns & Chargebacks</Typography>
-                  </TableCell>
-                  <TableCell align="left" colSpan={1}>
-                    <Typography variant="body2">
-                      {formatIncomeStatementData(incomeStatement.revenues['Returns & Chargebacks'])}
-                    </Typography>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell sx={{ maxWidth: 100 }} />
-                  <TableCell align="left" colSpan={1}>
-                    <Typography variant="body2">Interest Income</Typography>
-                  </TableCell>
-                  <TableCell align="left" colSpan={1}>
-                    <Typography variant="body2">
-                      {formatIncomeStatementData(incomeStatement.revenues['Interest Income'])}
-                    </Typography>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell sx={{ maxWidth: 100 }} />
-                  <TableCell align="left" colSpan={1}>
-                    <Typography variant="body2">Other Income</Typography>
-                  </TableCell>
-                  <TableCell align="left" colSpan={1}>
-                    <Typography variant="body2">
-                      {formatIncomeStatementData(incomeStatement.revenues['Other Income'])}
-                    </Typography>
-                  </TableCell>
-                </TableRow>
-              </AccordionDetails>
-            </Accordion>
+            <TableRow>
+              <TableCell align="left" colSpan={4}>
+                <Typography variant="subtitle1">Revenues</Typography>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell sx={{ maxWidth: 100 }} />
+              <TableCell align="left" colSpan={1}>
+                <Typography variant="body2">Sales Revenue</Typography>
+              </TableCell>
+              <TableCell align="left" colSpan={1}>
+                <Typography variant="body2">
+                  {formatIncomeStatementData(incomeStatement.revenues['Sales Revenue'])}
+                </Typography>
+              </TableCell>
+            </TableRow>{' '}
+            <TableRow>
+              <TableCell sx={{ maxWidth: 100 }} />
+              <TableCell align="left" colSpan={1}>
+                <Typography variant="body2">Service Revenue</Typography>
+              </TableCell>
+              <TableCell align="left" colSpan={1}>
+                <Typography variant="body2">
+                  {formatIncomeStatementData(incomeStatement.revenues['Service Revenue'])}
+                </Typography>
+              </TableCell>
+            </TableRow>{' '}
+            <TableRow>
+              <TableCell sx={{ maxWidth: 100 }} />
+              <TableCell align="left" colSpan={1}>
+                <Typography variant="body2">Returns & Chargebacks</Typography>
+              </TableCell>
+              <TableCell align="left" colSpan={1}>
+                <Typography variant="body2">
+                  {formatIncomeStatementData(incomeStatement.revenues['Returns & Chargebacks'])}
+                </Typography>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell sx={{ maxWidth: 100 }} />
+              <TableCell align="left" colSpan={1}>
+                <Typography variant="body2">Interest Income</Typography>
+              </TableCell>
+              <TableCell align="left" colSpan={1}>
+                <Typography variant="body2">
+                  {formatIncomeStatementData(incomeStatement.revenues['Interest Income'])}
+                </Typography>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell sx={{ maxWidth: 100 }} />
+              <TableCell align="left" colSpan={1}>
+                <Typography variant="body2">Other Income</Typography>
+              </TableCell>
+              <TableCell align="left" colSpan={1}>
+                <Typography variant="body2">
+                  {formatIncomeStatementData(incomeStatement.revenues['Other Income'])}
+                </Typography>
+              </TableCell>
+            </TableRow>
             <TableRow>
               <TableCell align="left" colSpan={3}>
                 <Typography variant="subtitle1">Total Revenue</Typography>

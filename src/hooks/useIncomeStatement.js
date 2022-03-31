@@ -14,9 +14,9 @@ function useIncomeStatement(
 
 export const createIncomeStatement = (transactions, startDate, endDate) => {
   const incomeStatement = {
-    revenues: { total: 0 },
-    costOfSales: { total: 0 },
-    expenses: { total: 0 },
+    revenues: { total: 0, perecent: 0},
+    costOfSales: { total: 0, percent: 0 },
+    expenses: { total: 0, percent: 0 },
     profit: { gross: 0, net: 0 }
   };
 
@@ -40,6 +40,9 @@ export const createIncomeStatement = (transactions, startDate, endDate) => {
 
     incomeStatement.profit.gross = grossProfit;
     incomeStatement.profit.net = netProfit;
+    incomeStatement.revenues.percent = ;
+    incomeStatement.costOfSales.percent = ;
+    incomeStatement.expenses.percent = ;
   };
   calcIncomeStatement(_.values(transactions));
 
