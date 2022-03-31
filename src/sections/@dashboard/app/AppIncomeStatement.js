@@ -38,7 +38,6 @@ export default function AppIncomeStatement() {
           </IconButton>
         }
         title="Income Statement"
-        subheader="March, 2021"
       />
       <CardContent>
         <TableContainer>

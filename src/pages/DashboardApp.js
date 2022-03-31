@@ -15,7 +15,8 @@ import {
   AppTrafficBySite,
   AppCurrentSubject,
   AppConversionRates,
-  AppExpensesByType
+  AppExpensesByType,
+  AppHeader
 } from '../sections/@dashboard/app';
 
 // ----------------------------------------------------------------------
@@ -24,9 +25,7 @@ export default function DashboardApp() {
   return (
     <Page title="Dashboard | Minimal-UI">
       <Container maxWidth="xl">
-        <Box sx={{ pb: 5 }}>
-          <Typography variant="h4">Hi, Welcome back</Typography>
-        </Box>
+        <AppHeader />
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
             <AppGrossProfit />

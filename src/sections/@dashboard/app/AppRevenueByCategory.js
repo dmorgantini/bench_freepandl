@@ -34,9 +34,6 @@ const ChartWrapperStyle = styled('div')(({ theme }) => ({
 
 export default function AppRevenueByCategory() {
   const incomeStatement = useIncomeStatement();
-
-  console.log(incomeStatement);
-
   const CHART_DATA = [
     incomeStatement.revenues['Sales Revenue'] || 0,
     incomeStatement.revenues['Service Revenue'] || 0,
