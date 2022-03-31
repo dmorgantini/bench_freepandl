@@ -7,6 +7,7 @@ import { Card, CardHeader } from '@mui/material';
 import { fNumber } from '../../../utils/formatNumber';
 //
 import { BaseOptionChart } from '../../../components/charts';
+import useIncomeStatement from '../../../hooks/useIncomeStatement';
 
 // ----------------------------------------------------------------------
 
@@ -31,9 +32,17 @@ const ChartWrapperStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-const CHART_DATA = [4344, 5435, 1443, 4443];
 
 export default function AppRevenueByCategory() {
+  const incomeStatement = useIncomeStatement();
+
+  console.log(incomeStatement);
+
+  const CHART_DATA = [
+    incomeStatement.costOfSales.total || 0, 
+    incomeStatement.expenses.total || 0
+  ];
+
   const theme = useTheme();
 
   const chartOptions = merge(BaseOptionChart(), {
@@ -43,7 +52,7 @@ export default function AppRevenueByCategory() {
       theme.palette.warning.main,
       theme.palette.error.main
     ],
-    labels: ['America', 'Asia', 'Europe', 'Africa'],
+    labels: ['Total Cost of Sales', 'Total Expenses'],
     stroke: { colors: [theme.palette.background.paper] },
     legend: { floating: true, horizontalAlign: 'center' },
     dataLabels: { enabled: true, dropShadow: { enabled: false } },
@@ -63,7 +72,7 @@ export default function AppRevenueByCategory() {
 
   return (
     <Card>
-      <CardHeader title="Current Visits" />
+      <CardHeader title="Expenses by type" />
       <ChartWrapperStyle dir="ltr">
         <ReactApexChart type="pie" series={CHART_DATA} options={chartOptions} height={280} />
       </ChartWrapperStyle>
