@@ -10,11 +10,12 @@ import {
   AppIncomeStatement,
   AppGrossProfit,
   AppOrderTimeline,
-  AppCurrentVisits,
+  AppRevenueByCategory,
   AppWebsiteVisits,
   AppTrafficBySite,
   AppCurrentSubject,
-  AppConversionRates
+  AppConversionRates,
+  AppExpensesByType
 } from '../sections/@dashboard/app';
 
 // ----------------------------------------------------------------------
@@ -46,8 +47,8 @@ export default function DashboardApp() {
 
           <Grid item xs={12} md={6} lg={4}>
             <Stack spacing={2}>
-              <AppCurrentVisits />
-              <AppCurrentVisits />
+              <AppRevenueByCategory />
+              <AppExpensesByType />
             </Stack>
           </Grid>
         </Grid>
